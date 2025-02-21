@@ -2,7 +2,12 @@ from notjson import NotJson
 
 nj = NotJson()
 
-json = '{ key: 4 key2: false key3: \'str\' }'
+input_file = ''
 
-for e in nj.scan(json):
+with open('test.njson', mode='r') as file:
+    input_file = file.read()
+
+toks = nj.scan(input_file)
+
+for e in toks:
     print(e.type, e.lexeme)

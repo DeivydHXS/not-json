@@ -1,0 +1,5 @@
+{
+    name: 'Not Json'
+    description: 'Probably a library to parse "not json" files'
+    version: 0.1
+}

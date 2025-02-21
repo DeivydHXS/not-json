@@ -6,7 +6,7 @@ class TokenType(Enum):
     LEFT_BRACKET = 0
     RIGHT_BRACKET = auto()
 
-    DOTS = auto()
+    COLON = auto()
     COMMA = auto()
 
     NUMBER = auto()
@@ -73,7 +73,7 @@ class Lexer():
             case ',':
                 return self.makeToken(TokenType.COMMA)
             case ':':
-                return self.makeToken(TokenType.DOTS)
+                return self.makeToken(TokenType.COLON)
             case '\'':
                 return self.string()
             
@@ -136,7 +136,7 @@ class Lexer():
                 self.line += 1
             self.advance()
         if self.isAtEnd():
-            return self.errorToken("Unterminated string.");
+            return self.errorToken("Unterminated string");
 
         self.advance();
         return self.makeToken(TokenType.STRING);
@@ -151,15 +151,13 @@ class Lexer():
                 case '\n':
                     self.line += 1
                     self.advance()
-                    break
                 case '/':
+                    print(ord(c), c)
                     if self.peekNext() == '/':
                         while self.peek() != '\n' and (not self.isAtEnd()):
                             self.advance()
                         else:
                             return
-                    break
-                
                 case _:
                     return
                 
