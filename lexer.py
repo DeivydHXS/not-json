@@ -12,7 +12,7 @@ class TokenType(Enum):
     NUMBER = auto()
     STRING = auto()
     IDENTIFIER = auto()
-    NIL = auto()
+    NONE = auto()
     FALSE = auto()
     TRUE = auto()
     LIST = auto()

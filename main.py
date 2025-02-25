@@ -11,3 +11,5 @@ toks = nj.scan(input_file)
 
 for e in toks:
     print(e.type, e.lexeme)
+
+print(nj.parse(toks))
