@@ -25,9 +25,11 @@
 
 # What we have for now
 
-I already make the parser works for literals like strings, numbers and booleans. And in the last update, i achieved, with a lot of effort, to make the list work on. Futhermore, i make little changes in the code and also add a new function call 'dumps', inspired by python json lib, that read a json text and return a python dict.
+I already make the parser works for literals like strings, numbers and booleans. And in the last update, i achieved, with a lot of effort, to make the list work on. Futhermore, i make little changes in the code and also add a new function call 'loads', inspired by python json lib, that read a json text and return a python dict.
 
-The next thing i want to do is make the parser accept the object expression, or something like that.
+Update v1.0
+Now we have loads and dumps functions, and we support objects.
+I think that's the v1.0 os the not-json lib
 
 ## References
 

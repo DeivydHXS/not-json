@@ -1,8 +1,8 @@
 {
     name: 'Not Json'
     description: 'Probably a library to parse "not json" files'
-    version: 0.1
-    bool: false
+    version: 1.0
+    bool: true
     list: [23, 's']
     person: {
         name: 'john'

@@ -62,7 +62,7 @@ class Parser():
         if self.match(TokenType.FALSE):
             return Literal(False)
         if self.match(TokenType.TRUE):
-            return Literal(False)
+            return Literal(True)
         if self.match(TokenType.NONE):
             return Literal(None)
         
