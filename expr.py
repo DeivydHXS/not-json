@@ -11,6 +11,10 @@ class Assign():
         self.name = name
         self.value = value
         
-class Listy():
+class List():
+    def __init__(self, value):
+        self.value = value
+
+class Block():
     def __init__(self, value):
         self.value = value

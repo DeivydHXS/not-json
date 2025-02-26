@@ -29,7 +29,7 @@ class Parser():
 
         self.consume(TokenType.RIGHT_BRACE, 'Expect \'}\' ')
 
-        return statements
+        return Block(statements)
     
     def grouping(self):
         self.consume(TokenType.LEFT_BRACKET, 'Expect \'[\' ')
@@ -41,7 +41,7 @@ class Parser():
 
         self.consume(TokenType.RIGHT_BRACKET, 'Expect \']\' ')
 
-        return Listy(statements)
+        return List(statements)
 
     def assignment(self):
         expr = self.primary()
@@ -49,7 +49,7 @@ class Parser():
         if self.match(TokenType.COLON):
             colon = self.previous()
             value = self.assignment()
-
+            
             if isinstance(expr, Identifier):
                 name = expr.name
                 return Assign(name, value)
@@ -77,6 +77,9 @@ class Parser():
         
         if self.check(TokenType.LEFT_BRACKET):
             return self.grouping()
+        
+        if self.check(TokenType.LEFT_BRACE):
+            return self.block()
 
         return self.error(self.peek(), 'Expect expression')
 
