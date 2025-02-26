@@ -5,13 +5,13 @@
  
  # Introduction
 
- I will make a json-like parser with some changes
- I really don't like the quotation marks in the name of a field, so i will remove it
- 
+ I really don't like the quotation marks in the name of a field, so i will remove it (joking)
+
+ I will make a json-like parser with some changes, more for study than anything else
+
  The parser will accept something like this:
 
 ```
-
  {
     number: 3
     string: 'str'
@@ -23,6 +23,11 @@
  }
 ```
 
+# What we have for now
+
+I already make the parser works for literals like strings, numbers and booleans. And in the last update, i achieved, with a lot of effort, to make the list work on. Futhermore, i make little changes in the code and also add a new function call 'dumps', inspired by python json lib, that read a json text and return a python dict.
+
+The next thing i want to do is make the parser accept the object expression, or something like that.
 
 ## References
 

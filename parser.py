@@ -6,10 +6,8 @@ class Parser():
         self.tokens = tokens
         self.current = 0
 
-    def parse(self):
-        statements = []
-        while not self.isAtEnd():
-            statements.append(self.statement())
+    def run(self):
+        statements = self.statement()
         return statements
     
     def statement(self):
@@ -33,6 +31,18 @@ class Parser():
 
         return statements
     
+    def grouping(self):
+        self.consume(TokenType.LEFT_BRACKET, 'Expect \'[\' ')
+        statements = []
+
+        while not self.check(TokenType.RIGHT_BRACKET) and not self.isAtEnd():
+            statements.append(self.statement())
+            self.consume(TokenType.COMMA, 'Expect \',\'')
+
+        self.consume(TokenType.RIGHT_BRACKET, 'Expect \']\' ')
+
+        return Listy(statements)
+
     def assignment(self):
         expr = self.primary()
 
@@ -45,6 +55,7 @@ class Parser():
                 return Assign(name, value)
 
             return self.error(colon, 'Invalid assignment')
+        
         return expr
     
     def primary(self):
@@ -56,7 +67,7 @@ class Parser():
             return Literal(None)
         
         if self.match(TokenType.NUMBER):
-            return Literal(self.previous().lexeme)
+            return Literal(float(self.previous().lexeme))
         
         if self.match(TokenType.STRING):
             return Literal(self.previous().lexeme)
@@ -64,8 +75,8 @@ class Parser():
         if self.match(TokenType.IDENTIFIER):
             return Identifier(self.previous().lexeme)
         
-        if self.check(TokenType.LEFT_BRACE):
-            return self.block()
+        if self.check(TokenType.LEFT_BRACKET):
+            return self.grouping()
 
         return self.error(self.peek(), 'Expect expression')
 

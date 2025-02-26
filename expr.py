@@ -10,3 +10,7 @@ class Assign():
     def __init__(self, name, value):
         self.name = name
         self.value = value
+        
+class Listy():
+    def __init__(self, value):
+        self.value = value

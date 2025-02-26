@@ -27,7 +27,7 @@ class Token():
         self.line = 0
 
 class Lexer():
-    def __init__(self, source):
+    def __init__(self, source = ''):
         self.source = source
         self.start = 0
         self.current = 0
@@ -75,6 +75,7 @@ class Lexer():
             case ':':
                 return self.makeToken(TokenType.COLON)
             case '\'':
+                self.start = self.current
                 return self.string()
             
         return self.errorToken('Unexpected character') 
@@ -136,10 +137,11 @@ class Lexer():
                 self.line += 1
             self.advance()
         if self.isAtEnd():
-            return self.errorToken("Unterminated string");
-
-        self.advance();
-        return self.makeToken(TokenType.STRING);
+            return self.errorToken("Unterminated string")
+        
+        result = self.makeToken(TokenType.STRING)
+        self.advance()
+        return result
 
 
     def skipWhitespace(self):

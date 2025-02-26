@@ -2,4 +2,6 @@
     name: 'Not Json'
     description: 'Probably a library to parse "not json" files'
     version: 0.1
+    bool: false
+    list: [23, 's']
 }
